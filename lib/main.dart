@@ -11,6 +11,7 @@
 // bar items. The first one is selected.](https://flutter.github.io/assets-for-api-docs/assets/material/bottom_navigation_bar.png)
 
 import 'package:flutter/material.dart';
+import 'package:flutter_todo/cardlist.dart';
 
 void main() => runApp(MyApp());
 
@@ -40,11 +41,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
+  final List<Widget> _widgetOptions = <Widget>[
+    CardList(),
     Text(
       'Index 1: Stats',
       style: optionStyle,
@@ -54,6 +52,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+    });
+  }
+
+  int _increment(int nowindex) {
+    nowindex = 0;
+    setState(() {
+      return nowindex + 1;
     });
   }
 
