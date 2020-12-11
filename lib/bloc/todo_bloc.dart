@@ -9,12 +9,24 @@ part 'todo_event.dart';
 part 'todo_state.dart';
 
 class TodoBloc extends Bloc<TodoEvent, TodoState> {
-  TodoBloc() : super(TodoInitial());
+  List<Todo> todos;
+  TodoBloc(this.todos) : super(TodoState());
 
   @override
   Stream<TodoState> mapEventToState(
     TodoEvent event,
   ) async* {
-    // TODO: implement mapEventToState
+    if (event is TodoInitial) {
+      yield TodoState(
+        todos: mock,
+      );
+    }
   }
 }
+
+final List<Todo> mock = <Todo>[
+  Todo(id: '1', complete: false, task: 'a', note: 'hello a'),
+  Todo(id: '2', complete: false, task: 'b', note: 'hello b'),
+  Todo(id: '3', complete: true, task: 'c', note: 'hello c'),
+  Todo(id: '4', complete: false, task: 'd', note: 'hello d'),
+];

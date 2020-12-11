@@ -21,7 +21,7 @@ class CardList extends StatelessWidget {
                         label: 'Todo ${index + 1}',
                       ),
                     ),
-                    color: Colors.amber[200]));
+                    color: Colors.grey[300]));
           }),
       //floatingActionButton: FloatingActionButton(onPressed: (),),
     );
