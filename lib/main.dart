@@ -44,7 +44,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   final List<Widget> _widgetOptions = <Widget>[
+    //page1
     CardList(),
+    //page2
     Text(
       'Index 1: Stats',
       style: optionStyle,

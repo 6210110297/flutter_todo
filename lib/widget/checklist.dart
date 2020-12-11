@@ -8,6 +8,8 @@ class LabeledCheckbox extends StatelessWidget {
     this.onChanged,
   });
 
+  _delete() {}
+
   final String label;
   final EdgeInsets padding;
   final bool value;
@@ -15,27 +17,37 @@ class LabeledCheckbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        onChanged(!value);
-      },
+    return Container(
       child: Padding(
         padding: padding,
         child: Row(
           children: <Widget>[
-            Checkbox(
-              value: value,
-              onChanged: (bool newValue) {
-                onChanged(newValue);
+            InkWell(
+              onTap: () {
+                onChanged(!value);
               },
+              child: Checkbox(
+                value: value,
+                onChanged: (bool newValue) {
+                  onChanged(newValue);
+                },
+              ),
             ),
             Expanded(child: Text(label)),
+            IconButton(
+              hoverColor: Colors.white,
+              icon: Icon(Icons.clear),
+              onPressed: _delete(),
+              tooltip: 'Delete',
+            )
           ],
         ),
       ),
     );
   }
 }
+//icon button
+//https://api.flutter.dev/flutter/material/IconButton-class.html
 
 /// This is the stateful widget that the main application instantiates.
 class CheckBox extends StatefulWidget {
