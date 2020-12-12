@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_todo/bloc/todo_bloc.dart';
 import 'package:flutter_todo/todo.dart';
 
 class LabeledCheckbox extends StatelessWidget {
@@ -52,17 +54,21 @@ class LabeledCheckbox extends StatelessWidget {
 
 /// This is the stateful widget that the main application instantiates.
 class CheckBox2 extends StatelessWidget {
-  Todo todo;
-  CheckBox2({this.todo});
+  int index;
+  CheckBox2({this.index});
 
   @override
   Widget build(BuildContext context) {
-    return LabeledCheckbox(
-        label: todo.task,
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        value: todo.complete,
-        onChanged: (bool newValue) {
-          todo.complete = newValue;
-        });
+    return BlocBuilder<TodoBloc, TodoState>(
+      builder: (context, state) {
+        return LabeledCheckbox(
+            label: state.todos[index].task,
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            value: state.todos[index].complete,
+            onChanged: (bool newValue) {
+              state.todos[index].complete = newValue;
+            });
+      },
+    );
   }
 }

@@ -6,3 +6,5 @@ class Todo {
 
   Todo({this.id, this.complete, this.task, this.note});
 }
+
+class Todos {}
